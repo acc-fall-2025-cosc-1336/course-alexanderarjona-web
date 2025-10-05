@@ -6,3 +6,10 @@ has the test functions
 from tests.examples.a_example import tests_devprocess 
 suite = unittest.TestLoader().loadTestsFromModule(tests_devprocess)
 unittest.TextTestRunner(verbosity=2).run(suite)
+
+import unittest
+from tests.homework.d_repetition import tests_repetition
+
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromModule(tests_repetition)
+    unittest.TextTestRunner(verbosity=2).run(suite)
