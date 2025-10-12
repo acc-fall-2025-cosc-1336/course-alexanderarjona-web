@@ -1,4 +1,3 @@
-# void_functions.py
 from .value_return_functions import get_gross_pay, get_fica_tax, get_federal_tax
 
 def display_payroll_check(hours, rate):
