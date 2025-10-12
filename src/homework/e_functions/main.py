@@ -1,4 +1,4 @@
-#from void_functions import display_payroll_check
+from void_functions import display_payroll_check
 
 def main():
     print("=== Payroll Check Generator ===")
