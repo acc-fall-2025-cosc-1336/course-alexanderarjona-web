@@ -1,37 +1,38 @@
-from src.homework.g_lists_and_tuples.lists import get_lowest_list_value, get_highest_list_value
+from lists import get_p_distance_matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        print(" ".join(f"{value:.5f}" for value in row))
 
 def main():
     while True:
-        print("\nMenu:")
-        print("1 - Show the list low/high values")
+        print("1 - Get p distance matrix")
         print("2 - Exit")
 
         choice = input("Choose an option: ")
 
         if choice == "1":
-            numbers = []
+            print("Enter DNA lists one per line.")
+            print("Separate characters with spaces. Enter an empty line to finish.")
+
+            lists = []
             while True:
-                try:
-                    value = float(input("Enter a list value: "))
-                    numbers.append(value)
-                except ValueError:
-                    print("Please enter a valid number.")
-                    continue
+                line = input("> ").strip()
+                if line == "":
+                    break
+                lists.append(line.split())
 
-                # Ask to stop after at least 3 values
-                if len(numbers) >= 3:
-                    again = input("Do you want to enter another value? (y/n): ").lower()
-                    if again != "y":
-                        break
-
-            print(f"\nLowest value: {get_lowest_list_value(numbers)}")
-            print(f"Highest value: {get_highest_list_value(numbers)}")
+            matrix = get_p_distance_matrix(lists)
+            print("\nP-Distance Matrix:")
+            print_matrix(matrix)
+            print()
 
         elif choice == "2":
-            print("Goodbye!")
             break
+
         else:
-            print("Invalid option. Try again.")
+            print("Invalid option.\n")
+
 
 if __name__ == "__main__":
     main()
