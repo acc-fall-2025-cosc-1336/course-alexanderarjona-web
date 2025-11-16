@@ -1,22 +1,24 @@
-def get_lowest_list_value(values):
-    """Return the lowest value in a list without using min()."""
-    if not values:
-        return None
-
-    lowest = values[0]
-    for v in values:
-        if v < lowest:
-            lowest = v
-    return lowest
+def get_p_distance(list1, list2):
+    # count positions where symbols differ
+    diffs = 0
+    for a, b in zip(list1, list2):
+        if a != b:
+            diffs += 1
+    return diffs / len(list1)
 
 
-def get_highest_list_value(values):
-    """Return the highest value in a list without using max()."""
-    if not values:
-        return None
+def get_p_distance_matrix(list_of_lists):
+    n = len(list_of_lists)
+    matrix = []
 
-    highest = values[0]
-    for v in values:
-        if v > highest:
-            highest = v
-    return highest
+    for i in range(n):
+        row = []
+        for j in range(n):
+            # distance from list i to list j
+            if i == j:
+                row.append(0.0)
+            else:
+                row.append(round(get_p_distance(list_of_lists[i], list_of_lists[j]), 5))
+        matrix.append(row)
+
+    return matrix
